@@ -68,9 +68,9 @@ EOF
 
 # User management
 # root pw
-arch-chroot echo -e "1234\n1234\n" | passwd
+arch-chroot echo 'root:1234' | chpasswd
 #create user
 useradd -m -G wheel jakobu5
 # pw change for users
-echo -e "1234\n1234\n" | passwd jakobu5
+arch-chroot echo 'jakobu5:1234' | chpasswd
 # bootloader
