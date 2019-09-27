@@ -73,4 +73,11 @@ arch-chroot echo 'root:1234' | chpasswd
 useradd -m -G wheel jakobu5
 # pw change for users
 arch-chroot echo 'jakobu5:1234' | chpasswd
+
+
 # bootloader
+#arch-chroot pacman -S grub efibootmgr dosfstools os-prober mtools
+#arch-chroot mkdir /boot/EFI
+#arch-chroot mount /dev/$ROOTPART1 /boot/EFI
+#arch-chroot grub-install --target=x86_64-efi  --bootloader-id=grub_uefi --recheck
+#arch-chroot grub-mkconfig -o /boot/grub/grub.cfg
