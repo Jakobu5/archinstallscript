@@ -1,6 +1,7 @@
 #/bin/bash
-HDD="/dev/vda"
-ROOTPART="/dev/vda1"
+HDD="/dev/nvme0n1"
+ROOTPART="/dev/nvme0n1p2"
+BOOTPART="/dev/nvme0n1p1"
 HOST="archbox"
 
 
@@ -10,17 +11,16 @@ HOST="archbox"
 
 ### PARTITIONING ###
 #for MBR/GRUB - legacy bios
-parted --script $HDD \
-	mklabel msdos \
-	mkpart primary ext4 1MiB 100% \
-  set 1 boot on
+#parted --script $HDD \
+#	mklabel msdos \
+#	mkpart primary ext4 1MiB 100% \
+#  set 1 boot on
 
 #for GPT/GRUB - UEFI
-#parted --script /dev/sda \
-#	mklabel gpt \
-#	mkpart P1 fat32 1MiB 512MiB  \
-#	mkpart P2 linux-swap 512MiB 1500MiB \
-#	mkpart primary ext4 1500MiB 7000MiB
+parted --script $HDD \
+	mklabel gpt \
+	mkpart P1 fat32 1MiB 512MiB  \
+	mkpart primary ext4 1500MiB 7000MiB
 
 
 # formating the partitions
@@ -73,6 +73,9 @@ arch-chroot echo 'root:1234' | chpasswd
 useradd -m -G wheel jakobu5
 # pw change for users
 arch-chroot echo 'jakobu5:1234' | chpasswd
+
+#networking
+arch-chroot systemctl enable dhcpcd
 
 
 # bootloader
