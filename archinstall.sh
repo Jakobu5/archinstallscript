@@ -2,10 +2,10 @@
 
 set -euxo pipefail
 
-HDD="/dev/nvme0n1"
-ROOTPART="/dev/nvme0n1p2"
-BOOTPART="/dev/nvme0n1p1"
-HOST="archbox"
+readonly HDD="/dev/nvme0n1"
+readonly ROOTPART="/dev/nvme0n1p2"
+readonly BOOTPART="/dev/nvme0n1p1"
+readonly HOST="archbox"
 
 
 # this script creats a fresh arch linux install
