@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euxo pipefail
+
 HDD="/dev/nvme0n1"
 ROOTPART="/dev/nvme0n1p2"
 BOOTPART="/dev/nvme0n1p1"
