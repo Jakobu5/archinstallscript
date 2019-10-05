@@ -14,23 +14,23 @@ HOST="archbox"
 
 ### PARTITIONING ###
 #for MBR/GRUB - legacy bios
-#parted --script $HDD \
+#parted --script ${HDD} \
 #	mklabel msdos \
 #	mkpart primary ext4 1MiB 100% \
 #  set 1 boot on
 
 #for GPT/GRUB - UEFI
-parted --script $HDD \
+parted --script ${HDD} \
 	mklabel gpt \
 	mkpart P1 fat32 1MiB 512MiB  \
 	mkpart primary ext4 1500MiB 7000MiB
 
 
 # formating the partitions
-mkfs.ext4 $ROOTPART
+mkfs.ext4 ${ROOTPART}
 
 # mount the partitions
-mount $ROOTPART /mnt
+mount ${ROOTPART} /mnt
 
 # TODO: automatically set austria server to the default server
 # https://wiki.archlinux.org/index.php/Mirrors#Sorting_mirrors
@@ -46,7 +46,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 # chroot into the installed system
 arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Vienna /etc/localtime
 arch-chroot /mnt hwclock --systohc
-echo $HOST > /mnt/etc/hostname
+echo ${HOST} > /mnt/etc/hostname
 cat >> /mnt/etc/hosts <<EOF
 127.0.0.1 localhost
 ::1       localhost
@@ -84,6 +84,6 @@ arch-chroot systemctl enable dhcpcd
 # bootloader
 #arch-chroot pacman -S grub efibootmgr dosfstools os-prober mtools
 #arch-chroot mkdir /boot/EFI
-#arch-chroot mount /dev/$ROOTPART1 /boot/EFI
+#arch-chroot mount /dev/${ROOTPART1} /boot/EFI
 #arch-chroot grub-install --target=x86_64-efi  --bootloader-id=grub_uefi --recheck
 #arch-chroot grub-mkconfig -o /boot/grub/grub.cfg
