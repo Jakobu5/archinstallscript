@@ -13,18 +13,18 @@ HOST="archbox"
 #for MBR/GRUB - legacy bios
 #parted --script $HDD \
 #	mklabel msdos \
-#	mkpart primary ext4 1MiB 100% \
+#	mkpart primary xfs 1MiB 100% \
 #  set 1 boot on
 
 #for GPT/GRUB - UEFI
 parted --script $HDD \
 	mklabel gpt \
 	mkpart P1 fat32 1MiB 512MiB  \
-	mkpart primary ext4 1500MiB 7000MiB
+	mkpart primary xfs 1500MiB 7000MiB
 
 
 # formating the partitions
-mkfs.ext4 $ROOTPART
+mkfs.xfs $ROOTPART
 
 # mount the partitions
 mount $ROOTPART /mnt
