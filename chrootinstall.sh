@@ -45,7 +45,7 @@ echo 'jakobu5:1234' | chpasswd
 #installing UEFI bootloader
 pacman -S --noconfirm grub efibootmgr dosfstools os-prober mtools
 mkdir /boot/EFI
-mount ${ROOTPART1} /boot/EFI
+mount ${BOOTPART} /boot/EFI
 grub-install --target=x86_64-efi  --bootloader-id=grub_uefi --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
 
