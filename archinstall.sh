@@ -2,9 +2,11 @@
 
 set -euxo pipefail
 
-readonly HDD="/dev/nvme0n1"
-readonly ROOTPART="/dev/nvme0n1p2"
-readonly BOOTPART="/dev/nvme0n1p1"
+loadkeys de-latin1
+
+readonly HDD="/dev/sda"
+readonly ROOTPART="/dev/sda1"
+readonly BOOTPART="/dev/sda2"
 readonly HOST="archbox"
 
 
