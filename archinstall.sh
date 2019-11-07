@@ -40,52 +40,9 @@ mount ${ROOTPART} /mnt
 ### INSTALLING BASE SYSTEM ###
 pacstrap /mnt base base-devel
 
-# generate fstab
+#generate fstab
 genfstab -U /mnt >> /mnt/etc/fstab
 
+cp chrootinstall.sh /mnt
 
-
-# chroot into the installed system
-arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Vienna /etc/localtime
-arch-chroot /mnt hwclock --systohc
-echo ${HOST} > /mnt/etc/hostname
-cat >> /mnt/etc/hosts <<EOF
-127.0.0.1 localhost
-::1       localhost
-127.0.1.1 $HOST.localdomain $HOST
-EOF
-
-# TODO:
-# https://wiki.archlinux.org/index.php/Installation_guide#Localization
-cat >> /mnt/etc/locale.gen <<EOF
-en_US.UTF-8 UTF-8
-EOF
-
-arch-chroot locale-gen
-
-cat >> /mnt/etc/locale.conf <<EOF
-LANG=en_US.UTF-8
-EOF
-
-cat >> /mnt/etc/vconsole.conf <<EOF
-KEYMAP=de-latin1
-EOF
-
-# User management
-# root pw
-arch-chroot echo 'root:1234' | chpasswd
-#create user
-useradd -m -G wheel jakobu5
-# pw change for users
-arch-chroot echo 'jakobu5:1234' | chpasswd
-
-#networking
-arch-chroot systemctl enable dhcpcd
-
-
-# bootloader
-#arch-chroot pacman -S grub efibootmgr dosfstools os-prober mtools
-#arch-chroot mkdir /boot/EFI
-#arch-chroot mount /dev/${ROOTPART1} /boot/EFI
-#arch-chroot grub-install --target=x86_64-efi  --bootloader-id=grub_uefi --recheck
-#arch-chroot grub-mkconfig -o /boot/grub/grub.cfg
+arch-chroot /mnt /chrootinstall.sh
