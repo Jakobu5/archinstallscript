@@ -25,7 +25,7 @@ readonly HOST="archbox"
 parted --script ${HDD} \
 	mklabel gpt \
 	mkpart P1 fat32 1MiB 512MiB  \
-	mkpart primary xfs 1500MiB 7000MiB
+	mkpart primary xfs 512MiB 100%
 
 
 # formating the partitions
