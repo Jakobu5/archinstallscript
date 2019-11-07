@@ -30,6 +30,7 @@ parted --script ${HDD} \
 
 # formating the partitions
 mkfs.xfs -f ${ROOTPART}
+mkfs.fat -F32 ${BOOTPART}
 
 # mount the partitions
 mount ${ROOTPART} /mnt
