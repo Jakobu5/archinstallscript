@@ -29,7 +29,7 @@ parted --script ${HDD} \
 
 
 # formating the partitions
-mkfs.xfs ${ROOTPART}
+mkfs.xfs -f ${ROOTPART}
 
 # mount the partitions
 mount ${ROOTPART} /mnt
@@ -38,7 +38,7 @@ mount ${ROOTPART} /mnt
 # https://wiki.archlinux.org/index.php/Mirrors#Sorting_mirrors
 
 ### INSTALLING BASE SYSTEM ###
-pacstrap /mnt base base-devel
+pacstrap /mnt base
 
 #generate fstab
 genfstab -U /mnt >> /mnt/etc/fstab
