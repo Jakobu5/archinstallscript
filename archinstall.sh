@@ -5,8 +5,8 @@ set -euxo pipefail
 loadkeys de-latin1
 
 readonly HDD="/dev/sda"
-readonly ROOTPART="/dev/sda1"
-readonly BOOTPART="/dev/sda2"
+readonly ROOTPART="/dev/sda2"
+readonly BOOTPART="/dev/sda1"
 readonly HOST="archbox"
 
 
