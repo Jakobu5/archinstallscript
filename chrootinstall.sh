@@ -26,11 +26,11 @@ EOF
 
 locale-gen
 
-cat >> /mnt/etc/locale.conf <<EOF
+cat >> /etc/locale.conf <<EOF
 LANG=en_US.UTF-8
 EOF
 
-cat >> /mnt/etc/vconsole.conf <<EOF
+cat >> /etc/vconsole.conf <<EOF
 KEYMAP=de-latin1
 EOF
 
