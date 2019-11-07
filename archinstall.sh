@@ -45,4 +45,6 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 cp chrootinstall.sh /mnt
 
+chmod +x /mnt/chrootinstall.sh
+
 arch-chroot /mnt /chrootinstall.sh
