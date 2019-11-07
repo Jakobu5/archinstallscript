@@ -42,16 +42,11 @@ useradd -m -G wheel jakobu5
 # pw change for users
 echo 'jakobu5:1234' | chpasswd
 
-#networking
-systemctl enable dhcpcd
-
-
 #installing UEFI bootloader
 pacman -S grub efibootmgr dosfstools os-prober mtools
 mkdir /boot/EFI
 mount ${ROOTPART1} /boot/EFI
 grub-install --target=x86_64-efi  --bootloader-id=grub_uefi --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
-
 
 #finished installation in chroot env
