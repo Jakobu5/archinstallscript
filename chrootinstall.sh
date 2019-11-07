@@ -43,7 +43,7 @@ useradd -m -G wheel jakobu5
 echo 'jakobu5:1234' | chpasswd
 
 #installing UEFI bootloader
-pacman -S grub efibootmgr dosfstools os-prober mtools
+pacman -S --noconfirm grub efibootmgr dosfstools os-prober mtools
 mkdir /boot/EFI
 mount ${ROOTPART1} /boot/EFI
 grub-install --target=x86_64-efi  --bootloader-id=grub_uefi --recheck
