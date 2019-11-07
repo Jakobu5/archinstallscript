@@ -11,7 +11,7 @@ readonly HOST="archbox"
 
 #starting installation inside chroot env
 ln -sf /usr/share/zoneinfo/Europe/Vienna /etc/localtime
-/mnt hwclock --systohc
+hwclock --systohc
 echo ${HOST} > /etc/hostname
 cat >> /etc/hosts <<EOF
 127.0.0.1 localhost
