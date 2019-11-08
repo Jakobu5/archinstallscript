@@ -42,6 +42,10 @@ useradd -m -G wheel jakobu5
 # pw change for users
 echo 'jakobu5:1234' | chpasswd
 
+#installing Linux (was not installed)
+pacman -S noconfirm linux mkinitcpio
+mkinitcpio -p linux
+
 #installing UEFI bootloader
 pacman -S --noconfirm grub efibootmgr dosfstools os-prober mtools
 mkdir /boot/EFI
