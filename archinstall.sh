@@ -49,3 +49,5 @@ cp chrootinstall.sh /mnt
 chmod +x /mnt/chrootinstall.sh
 
 arch-chroot /mnt /chrootinstall.sh
+
+umount -a
