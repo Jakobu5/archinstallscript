@@ -43,8 +43,7 @@ useradd -m -G wheel jakobu5
 echo 'jakobu5:1234' | chpasswd
 
 #installing Linux (was not installed)
-pacman -S noconfirm linux mkinitcpio
-mkinitcpio -p linux
+pacman -S noconfirm linux mkinitcpio dhcpcd
 
 #installing UEFI bootloader
 pacman -S --noconfirm grub efibootmgr dosfstools os-prober mtools

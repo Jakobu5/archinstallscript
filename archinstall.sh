@@ -39,7 +39,7 @@ mount ${ROOTPART} /mnt
 # https://wiki.archlinux.org/index.php/Mirrors#Sorting_mirrors
 
 ### INSTALLING BASE SYSTEM ###
-pacstrap /mnt base
+pacstrap /mnt base base-devel
 
 #generate fstab
 genfstab -U /mnt >> /mnt/etc/fstab
