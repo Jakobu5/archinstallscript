@@ -4,10 +4,7 @@ set -euxo pipefail
 
 loadkeys de-latin1
 
-readonly HDD="/dev/sda"
-readonly ROOTPART="/dev/sda2"
-readonly BOOTPART="/dev/sda1"
-readonly HOST="archbox"
+source config.conf
 
 
 # this script creats a fresh arch linux install
@@ -45,6 +42,7 @@ pacstrap /mnt base base-devel
 genfstab -U /mnt >> /mnt/etc/fstab
 
 cp chrootinstall.sh /mnt
+cp config.conf /mnt
 
 chmod +x /mnt/chrootinstall.sh
 

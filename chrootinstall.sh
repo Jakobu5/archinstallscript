@@ -4,10 +4,7 @@ set -euxo pipefail
 
 loadkeys de-latin1
 
-readonly HDD="/dev/sda"
-readonly ROOTPART="/dev/sda2"
-readonly BOOTPART="/dev/sda1"
-readonly HOST="archbox"
+source config.conf
 
 #starting installation inside chroot env
 ln -sf /usr/share/zoneinfo/Europe/Vienna /etc/localtime
