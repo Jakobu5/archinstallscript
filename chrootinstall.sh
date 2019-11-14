@@ -33,11 +33,11 @@ EOF
 
 # User management
 # root pw
-echo 'root:1234' | chpasswd
+echo 'root:'${PWD} | chpasswd
 #create user
 useradd -m -G wheel jakobu5
 # pw change for users
-echo 'jakobu5:1234' | chpasswd
+echo ${USER}':'${PWD} | chpasswd
 
 #installing Linux (was not installed)
 pacman -S --noconfirm linux mkinitcpio dhcpcd
