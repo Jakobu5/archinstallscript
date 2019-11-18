@@ -42,9 +42,11 @@ pacstrap /mnt base base-devel
 genfstab -U /mnt >> /mnt/etc/fstab
 
 cp chrootinstall.sh /mnt
+cp finishinstall.sh /mnt
 cp config.conf /mnt
 
 chmod +x /mnt/chrootinstall.sh
+chmod +x /mnt/finishinstall.sh
 
 arch-chroot /mnt /chrootinstall.sh
 
