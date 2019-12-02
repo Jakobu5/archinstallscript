@@ -35,7 +35,7 @@ EOF
 # root pw
 echo 'root:'${PWD} | chpasswd
 #create user
-useradd -m -G wheel jakobu5
+useradd -m -G wheel ${USER}
 # pw change for users
 echo ${USER}':'${PWD} | chpasswd
 
@@ -44,7 +44,7 @@ HOOKS="HOOKS=(base udev autodetect modconf block encrypt filesystems keyboard ke
 echo ${HOOKS} >> /etc/mkinitcpio.conf
 
 # generating new kernel image
-mkinitpcio -p linux
+mkinitcpio -p linux
 
 # change bootloader kernel parameter
 UUID=$(lsblk -dno UUID ${ROOTPART})
