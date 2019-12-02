@@ -35,7 +35,7 @@ EOF
 # root pw
 echo 'root:'${PWD} | chpasswd
 #create user
-useradd -m -G wheel jakobu5
+useradd -m -G wheel ${USER}
 # pw change for users
 echo ${USER}':'${PWD} | chpasswd
 
